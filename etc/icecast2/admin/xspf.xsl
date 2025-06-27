@@ -1,6 +1,6 @@
 <!--
-    XSPF xslt stylesheet for Icecast 2.3.2 and above
-    Copyright (C) 2007 Thomas B. Ruecker, tbr@ruecker-itk.de
+    XSPF xslt stylesheet for Icecast and above
+    Copyright (C) 2007 Thomas B. Ruecker, <thomas@ruecker.fi>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -71,4 +71,3 @@ Content Type:<xsl:value-of select="server_type" /><xsl:text>
 
 </xsl:template>
 </xsl:stylesheet>
-
