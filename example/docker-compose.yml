@@ -1,0 +1,14 @@
+services:
+  icecast:
+    image: mxwllstn/icecast:latest
+    env_file:
+      - .env
+    environment:
+      ICECAST_LOCATION: ${ICECAST_LOCATION}
+      ICECAST_ADMIN_EMAIL: ${ICECAST_ADMIN_EMAIL}
+      ICECAST_SOURCE_PASSWORD: ${ICECAST_SOURCE_PASSWORD}
+      ICECAST_ADMIN_PASSWORD: ${ICECAST_ADMIN_PASSWORD}
+      ICECAST_PASSWORD: ${ICECAST_PASSWORD}
+      ICECAST_RELAY_PASSWORD: ${ICECAST_RELAY_PASSWORD}
+    ports:
+    - 8000:8000
