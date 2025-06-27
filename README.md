@@ -1,46 +1,54 @@
-# Icecast in Docker [![Build Status](https://travis-ci.org/moul/docker-icecast.svg?branch=master)](https://travis-ci.org/moul/docker-icecast)
+# Icecast in Docker
 
 Icecast2 Dockerfile
 
-[![](http://dockeri.co/image/moul/icecast)](https://index.docker.io/u/moul/icecast/)
+[![](http://dockeri.co/image/mxwllstn/icecast)](https://hub.docker.com/r/mxwllstn/icecast/)
+
+## Build
+```bash
+docker build -t mxwllstn/icecast .
+```
 
 ## Run
 
 Run with default password, export port 8000
 
 ```bash
-docker run -p 8000:8000 moul/icecast
+docker run -d --name icecast -p 8000:8000 mxwllstn/icecast
 $BROWSER localhost:8000
 ```
 
 Run with custom password
 
 ```bash
-docker run -p 8000:8000 -e ICECAST_SOURCE_PASSWORD=aaaa -e ICECAST_ADMIN_PASSWORD=bbbb -e ICECAST_PASSWORD=cccc -e ICECAST_RELAY_PASSWORD=dddd -e ICECAST_HOSTNAME=noise.example.com moul/icecast
+docker run -d --name icecast -p 8000:8000 -e ICECAST_SOURCE_PASSWORD=aaaa -e ICECAST_ADMIN_PASSWORD=bbbb -e ICECAST_PASSWORD=cccc -e ICECAST_RELAY_PASSWORD=dddd -e ICECAST_HOSTNAME=noise.example.com mxwllstn/icecast
+```
+
+Run with .env file
+```bash
+docker run -d --name icecast -p 8000:8000  --env-file ./.env mxwllstn/icecast
+
 ```
 
 Run with custom configuration
 
 ```bash
-docker run -p 8000:8000 -v /local/path/to/icecast/config:/etc/icecast2 moul/icecast
-docker run -p 8000:8000 -v /local/path/to/icecast.xml:/etc/icecast2/icecast.xml moul/icecast
+docker run -p 8000:8000 -v /local/path/to/icecast/config:/etc/icecast2 mxwllstn/icecast
+docker run -p 8000:8000 -v /local/path/to/icecast.xml:/etc/icecast2/icecast.xml mxwllstn/icecast
 ```
 
 Extends Dockerfile
 
 ```Dockerfile
-FROM moul/icecast
+FROM mxwllstn/icecast
 ADD ./icecast.xml /etc/icecast2
 ```
 
-Docker-compose
+Docker compose
 
 ```yaml
 icecast:
-  image: moul/icecast
-  volumes:
-  - logs:/var/log/icecast2
-  - /etc/localtime:/etc/localtime:ro
+  image: mxwllstn/icecast
   environment:
   - ICECAST_SOURCE_PASSWORD=aaa
   - ICECAST_ADMIN_PASSWORD=bbb
@@ -51,10 +59,11 @@ icecast:
   - 8000:8000
 ```
 
-## Examples
+Run with docker compose
 
-- https://github.com/ultreme/scc-radio/
-
+```bash
+docker compose up --detach
+```
 
 ## License
 
