@@ -1,3 +1,4 @@
+name: icecast
 services:
   icecast:
     image: mxwllstn/icecast:latest
